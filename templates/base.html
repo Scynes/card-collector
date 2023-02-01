@@ -9,8 +9,15 @@
         <title>Yu-Gi-Oh Card Collector</title>
     </head>
     <body>
-        {% include 'navigation.html' %}
-        {% block content %}
-        {% endblock %}
+        <div id="layout-container">   
+            {% include 'navigation.html' %}
+
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+
+            {% include 'footer.html' %}
+        </div>
     </body>
 </html>

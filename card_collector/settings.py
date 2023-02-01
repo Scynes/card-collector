@@ -44,7 +44,7 @@ ROOT_URLCONF = 'card_collector.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates', 'templates/components'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
