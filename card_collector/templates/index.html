@@ -1,5 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>True Index</h1>
+    <script>
+        const handleHover = (target, event) => {
+            
+            const mouseX = Math.abs(event.clientX - target.getBoundingClientRect().x);
+            const mouseY = Math.abs(event.clientY - target.getBoundingClientRect().y);
+            const width = (target.getBoundingClientRect().width / 2);
+            const height = (target.getBoundingClientRect().height / 2);
+    
+            const calcAngleX = (mouseX - width) / 10;
+            const calcAngleY = (mouseY - height) / 10;
+    
+            target.style.transform = `perspective(70ch) rotateX(${-calcAngleY}deg) rotateY(${calcAngleX}deg) scale(1.15)`
+        }
+
+        const handleReset = (target) => {
+    
+            target.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+        }
+    </script>
+    <div id="card-index-container" class="flex column center height-100">
+        {% for card in cards %}
+            <div class="card border-round">
+                <div class="card-info grid">
+                    <h2>{{ card.name }}</h2>
+                    {% if card.type != None %}
+                        <h5>Monster Type: {{ card.type }}</h5>
+                    {% endif %}
+                    <h5>Card Type: {{ card.card_type }}</h5>
+                    <h5>Card Value: {{ card.value }}</h5>
+                    <p>{{ card.description }}</p>
+                </div>
+                <div class="card-image">
+                    <img id="card-images" src="{{ card.card_image }}" alt="" onmousemove="handleHover(this, event)" onmouseleave="handleReset(this)">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

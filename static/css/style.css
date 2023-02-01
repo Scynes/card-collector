@@ -1,6 +1,7 @@
 :root {
     --primary-color: rgb(89, 89, 141);
-    --secondary-color: rgb(35, 35, 39);
+    --secondary-color: rgb(51, 51, 57);
+    --primary-color-light: rgba(89, 89, 141, 0.9);
     --secondary-color-light: rgb(21, 86, 228);
     --primary-text-color: rgb(255, 255, 255);
 }
@@ -17,12 +18,14 @@ body, html {
 
 body {
     background-color: var(--secondary-color);
+    background-image: url(https://wallpapercave.com/wp/2C2nvws.jpg);
+    background-size: cover;
 }
 
 footer {
     min-height: 3rem;
     padding: 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-light);
 }
 
 main, footer {
@@ -87,9 +90,14 @@ main, footer {
 /* ---------------- *
  *    APPLICATION   *
  * ---------------- */
+a:is(.nav-item) {
+    text-decoration: none;
+    color: white;
+}
+
 #navigation-bar {
     margin: 0.5rem;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-light);
     box-shadow: 0px 0.75rem 10px rgba(21, 21, 22, 0.8);
     color: white;
     overflow: hidden;
@@ -114,7 +122,41 @@ main, footer {
     background-color: var(--secondary-color-light);
 }
 
-a:is(.nav-item) {
-    text-decoration: none;
-    color: white;
+.nav-item > img {
+    height: 5rem;
+}
+
+#card-index-container {
+    gap: 1rem;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.5rem;
+    min-height: 10rem;
+    min-width: 20rem;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+}
+
+.card-image, .card-image > img {
+    width: 100%;
+}
+
+.card-image > img:not(:hover) {
+    transition: 0.25s ease;
+}
+
+.card-info > * {
+    padding: 0.25rem;
+}
+
+@media (min-width: 480px) {
+
+    .card {
+        max-width: 40rem;
+        min-height: 15rem;
+        width: 100%;
+    }
 }
