@@ -1,4 +1,7 @@
 from django.shortcuts import render
 
+from card.models import Card
+
 def index(request):
-    return render(request, 'index.html')
+    cards = Card.objects.all()
+    return render(request, 'index.html', { 'cards': cards })
